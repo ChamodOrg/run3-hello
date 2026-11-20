@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "run3-hello"
+createdAt = "2026-11-20T23:54:54Z"
+idea = "hello-world web app"
