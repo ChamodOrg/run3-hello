@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 3,
+  "generatedAt": "2026-11-21T00:25:24.596Z",
+  "commit": "1237a7b0d95e57bdba4cdb0fa6bcb60b5cf2fcb0",
+  "baseUrl": "http://http-run3-hello-he-development-default-5e3863ce.openchoreoapis.localhost:19080/",
+  "isolation": "The app is a static greeting page with no data or containers; each scenario opened a fresh page load with no state written, so nothing carries between scenarios and no container was needed.",
+  "captureWindow": {
+    "first": "2026-11-21T00:25:20.611Z",
+    "last": "2026-11-21T00:25:20.637Z"
+  },
+  "scenarios": [
+    {
+      "feature": "F1 Greeting",
+      "featureFile": "specs/validation/acceptance/F1-greeting.feature",
+      "line": 6,
+      "rule": "The app shows the fixed message \"Hello, World!\"",
+      "scenario": "Opening the app",
+      "tags": [
+        "@story-F1.1"
+      ],
+      "outcome": "passed",
+      "steps": [
+        {
+          "text": "Vera the visitor has the app's address",
+          "keyword": "Given",
+          "command": "cat /tmp/validation-context.json"
+        },
+        {
+          "text": "Vera opens the app",
+          "keyword": "When",
+          "command": "agent-browser open <base url>"
+        },
+        {
+          "text": "the page shows the message \"Hello, World!\"",
+          "keyword": "Then",
+          "command": "agent-browser wait --text \"Hello, World!\" --timeout 3000",
+          "exit": 0
+        }
+      ]
+    },
+    {
+      "feature": "F1 Greeting",
+      "featureFile": "specs/validation/acceptance/F1-greeting.feature",
+      "line": 14,
+      "rule": "The greeting is shown on the first page without sign-in or any click",
+      "scenario": "No sign-in is asked for",
+      "tags": [
+        "@story-F1.2"
+      ],
+      "outcome": "passed",
+      "steps": [
+        {
+          "text": "Vera the visitor has no account",
+          "keyword": "Given",
+          "command": "fresh browser session, no login performed"
+        },
+        {
+          "text": "Vera opens the app",
+          "keyword": "When",
+          "command": "agent-browser open <base url>"
+        },
+        {
+          "text": "the greeting \"Hello, World!\" is visible without a sign-in page appearing",
+          "keyword": "Then",
+          "command": "agent-browser get url",
+          "exit": 0,
+          "observed": "URL unchanged (base URL, no redirect); greeting present via wait --text exit 0; 0 inputs/forms; no login/oauth requests"
+        },
+        {
+          "text": "no click was needed to reach it",
+          "keyword": "And",
+          "command": "agent-browser wait --text \"Hello, World!\" --timeout 3000",
+          "exit": 0,
+          "observed": "no click issued between open and the wait"
+        }
+      ]
+    }
+  ]
+}
