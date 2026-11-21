@@ -1,6 +1,6 @@
-import { Box } from "@wso2/oxygen-ui";
+import Greeting from "./pages/Greeting";
 
-// Public app: no sign-in, no route guard. Pages are added per feature.
+// Public app: no sign-in, no route guard, no navigation. One page.
 export default function App() {
-  return <Box component="main" sx={{ minHeight: "100vh", p: 2 }} />;
+  return <Greeting />;
 }
